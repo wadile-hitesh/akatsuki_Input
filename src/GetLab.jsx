@@ -9,9 +9,9 @@ function GetLab() {
     const [labs,setLabs] = useState("")
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await service.getLab(data)
-        .then((res) => setLabs(res.documents[0]))
-       
+        // await service.getLab(data)?
+        setLabs(data)
+        // console.log(data);
     }
     return !labs ? (
         <div><div className='w-screen h-screen bg-gray-900 box-border'>
@@ -31,7 +31,8 @@ function GetLab() {
         </div></div>
     ) : (
         <div>
-            Your LabNumber : {labs.labNumber}
+                <p>Your LabNumber : {labs[0] + labs[1]}</p>
+                <p>Desk No : {labs[2] + labs[3]}</p>            
         </div>
     )
 }
