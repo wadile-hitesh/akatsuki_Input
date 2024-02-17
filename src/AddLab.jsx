@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import service from './appwrite/service';
 
 
 function AddLab() {
