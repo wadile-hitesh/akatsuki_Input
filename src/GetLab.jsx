@@ -50,7 +50,7 @@ function GetLab(){
                 <div className='bg-black text-white flex flex-wrap w-3/4 mx-auto justify-center items-center my-2 border-2 border-white relative rounded-tr-[30px] rounded-bl-[30px]'>
                 <div className='mx-2 my-4'>
                     <p className='py-2'>Round Details</p>
-                        <p className='py-1'>Lab Number : {labs[0] + labs[1]}</p>
+                        <p className='py-1'>Lab Number : Computer Center </p>
                         <p className='py-1'>Desk No : {labs[2] + labs[3]}</p>     
                         <p className='py-1'>First PDF Password : {arr[labs[5]-1]}</p>       
                 </div>
