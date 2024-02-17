@@ -1,19 +1,24 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import BackgroundImage from './assets/background.svg'
 import DetectiveImage from './assets/detective.svg'
 import AkatsukiImage from './assets/akatsuki.svg'
 import LastBackground from './assets/last.svg'
-
+import cidAudio from './assets/CId.m4a'
+import useSound from 'use-sound'
 function GetLab(){
     const [data, setData] = useState("")
     const [labs,setLabs] = useState("")
-    const arr = ["aset", "setb", "cset", "setd","eset","afnen"]
+    const arr = ["aset", "setb", "cset", "setd","eset","setf"]
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLabs(data)
         console.log(labs);
     }
+
+    const [playSound] = useSound(cidAudio);
+    const audio = new Audio(cidAudio)
+
     return !labs ? (
         <div className='relative'>
             <div className='absolute left-0 top-0 z-[-1]'>
@@ -28,9 +33,9 @@ function GetLab(){
                     <p className=' bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text font-mono font-bold'>PDF Safari Round</p>
                     <form onSubmit={handleSubmit}>
                         <label className='text-sm font-light '>Enter the Code</label>
-                        <input className='w-full font-light text-sm rounded-md p-1 text-black' value={data} placeholder='Your Code' onChange={(e)=> setData(e.target.value)}/>
+                        <input className='w-full font-light text-sm rounded-md p-1 text-black' value={data} placeholder='Your Code' onChange={(e) => setData(e.target.value)} pattern="^CC[1-3][1-9]_[1-6]$"/>
 
-                        <button className='w-full mt-2 font-light text-sm rounded-md p-1 bg-blue-500 text-white' type='submit'>Submit</button>
+                        <button onClick={()=> audio.play()} className='w-full mt-2 font-light text-sm rounded-md p-1 bg-blue-500 text-white' type='submit'>Submit</button>
                     </form>
                 </div>
             </div>
@@ -41,7 +46,6 @@ function GetLab(){
                     <div className='w-full z-10 top-0 pt-10 '>
                         <img className='w-1/4 m-auto' src={AkatsukiImage} />
                     </div>
-                   
             </div>
                 <div className='bg-black text-white flex flex-wrap w-3/4 mx-auto justify-center items-center my-2 border-2 border-white relative rounded-tr-[30px] rounded-bl-[30px]'>
                 <div className='mx-2 my-4'>
